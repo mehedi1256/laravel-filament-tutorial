@@ -18,7 +18,7 @@ class StateResource extends Resource
     protected static ?string $model = State::class;
 
     // for custom icon
-    protected static ?string $navigationIcon = 'heroicon-o-flag';
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
     // for custom navigation label
     protected static ?string $navigationLabel = 'State';
@@ -39,9 +39,13 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('country_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('country_id')
+                    ->relationship(name: 'country', titleAttribute: 'name')
+                    ->searchable()
+                    ->preload()
+                    ->multiple()
+                    ->native(true)
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -52,10 +56,12 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('country_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('country.name')
+                    ->label('Country Name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('State Name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -65,7 +71,7 @@ class StateResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])->defaultSort('country.name', 'asc')
             ->filters([
                 //
             ])
