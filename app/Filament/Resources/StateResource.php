@@ -63,7 +63,7 @@ class StateResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('State Name')
                     ->sortable()
-                    ->searchable(isIndividual: true),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
