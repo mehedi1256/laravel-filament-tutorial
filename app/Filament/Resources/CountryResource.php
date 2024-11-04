@@ -7,8 +7,13 @@ use Filament\Tables;
 use App\Models\Country;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\CountryResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CountryResource\RelationManagers;
@@ -86,6 +91,20 @@ class CountryResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    // for custom view page
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Country Information')
+                    ->schema([
+                        TextEntry::make('name')->label('Country Name'),
+                        TextEntry::make('code'),
+                        TextEntry::make('phonecode'),
+                    ])->columns(3),
             ]);
     }
 
