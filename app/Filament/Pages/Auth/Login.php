@@ -11,6 +11,11 @@ use Filament\Support\Components\Component;
 
 class Login extends \Filament\Pages\Auth\Login
 {
+    /**
+     * method overriding
+     *
+     * @return array
+     */
     protected function getForms(): array
     {
         return [
@@ -26,6 +31,10 @@ class Login extends \Filament\Pages\Auth\Login
         ];
     }
 
+    /**
+     * method overriding
+     */
+
     protected function getPhoneNoFormComponent(): Component
     {
         return TextInput::make('phone')
@@ -35,6 +44,10 @@ class Login extends \Filament\Pages\Auth\Login
             ->autofocus()
             ->extraInputAttributes(['tabindex' => 1]);
     }
+
+    /**
+     * method overriding
+     */
 
     protected function getCredentialsFromFormData(array $data): array
     {
