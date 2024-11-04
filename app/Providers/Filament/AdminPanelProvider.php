@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login(\App\Filament\Pages\Auth\Login::class)
-            ->registration() // custom registration
+            ->registration(\App\Filament\Pages\Auth\Register::class) // custom registration
             ->profile() // for profile
             ->userMenuItems([
                 MenuItem::make()
