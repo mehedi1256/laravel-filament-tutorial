@@ -15,6 +15,8 @@ class TestChartWidget extends ChartWidget
     use InteractsWithPageFilters; // for filtering
 
     protected static ?string $heading = 'Chart';
+    
+    protected static ?int $sort = 2; // for sorting
 
     protected function getData(): array
     {

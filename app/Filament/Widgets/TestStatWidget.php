@@ -11,6 +11,9 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 class TestStatWidget extends BaseWidget
 {
     use InteractsWithPageFilters; // for filtering
+
+    protected static ?int $sort = 1; // for sorting
+    
     protected function getStats(): array
     {
         $start = $this->filters['startDate'];
