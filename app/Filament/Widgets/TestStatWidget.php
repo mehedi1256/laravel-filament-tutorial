@@ -32,7 +32,6 @@ class TestStatWidget extends BaseWidget
                     )
                     ->count()
             )
-            
                 ->description('Total User')
                 ->descriptionIcon('heroicon-s-user-group', IconPosition::Before)
                 ->chart([7, 2, 10, 3, 15, 4, 17])
