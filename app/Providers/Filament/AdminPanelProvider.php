@@ -45,6 +45,7 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
+            
             ->font('Inter')
             ->brandLogo(asset('/images/admin-logo.png')) // for custom logo
             ->favicon(asset('/images/admin-favicon.jpg')) // for custom favicon
